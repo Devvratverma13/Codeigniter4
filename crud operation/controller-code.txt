@@ -1,0 +1,122 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class UserController extends CI_Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('User_model');
+        $this->load->helper('url'); 
+        $this->load->library('session');
+    }
+
+    // Signup page
+    public function signup()
+    {
+        $this->load->view('signup');
+    }
+
+    // Signup action
+    public function signup_action()
+    {
+        $username = $this->input->post('username');
+        $email = $this->input->post('email');
+        $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+
+        $user_data = [
+            'username' => $username,
+            'email' => $email,
+            'password' => $password,
+            'role' => 'user' // Default user role
+        ];
+
+        $this->User_model->insert_user($user_data);
+        redirect('usercontroller/login');
+    }
+
+    // Login page
+    public function login()
+    {
+        $this->load->view('login');
+    }
+
+    // Login action
+    public function login_action()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+
+        $user = $this->User_model->get_user_by_email($email);
+
+        if ($user && password_verify($password, $user['password'])) {
+            $this->session->set_userdata('user_id', $user['id']);
+            $this->session->set_userdata('role', $user['role']);
+            redirect('usercontroller/dashboard');
+        } else {
+            $this->session->set_flashdata('error', 'Invalid email or password');
+            redirect('usercontroller/login');
+        }
+    }
+
+    // Dashboard page (User or Admin based on session)
+    public function dashboard()
+    {
+        if (!$this->session->userdata('user_id')) {
+            redirect('usercontroller/login');
+        }
+
+        $role = $this->session->userdata('role');
+        if ($role === 'admin') {
+            $this->admin_dashboard();
+        } else {
+            $this->load->view('user_dashboard');
+        }
+    }
+
+    // Admin dashboard
+    public function admin_dashboard()
+    {
+        $users = $this->User_model->get_all_users();
+        $this->load->view('admin_dashboard', ['users' => $users]);
+    }
+
+    // Admin delete user
+    public function delete_user($id)
+    {
+        $this->User_model->delete_user($id);
+        redirect('usercontroller/admin_dashboard');
+    }
+
+    // Admin edit user (optional)
+    public function edit_user($id)
+    {
+        $user = $this->User_model->get_user($id);
+        $this->load->view('edit_user', ['user' => $user]);
+    }
+
+    // Admin update user
+    public function update_user($id)
+    {
+        $username = $this->input->post('username');
+        $email = $this->input->post('email');
+        $role = $this->input->post('role');
+
+        $user_data = [
+            'username' => $username,
+            'email' => $email,
+            'role' => $role
+        ];
+
+        $this->User_model->update_user($id, $user_data);
+        redirect('usercontroller/admin_dashboard');
+    }
+
+    // Logout
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect('usercontroller/login');
+    }
+}
+?>

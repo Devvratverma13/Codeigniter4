@@ -1,0 +1,2 @@
+<h2>Welcome, User!</h2>
+<a href="<?= base_url('usercontroller/logout') ?>">Logout</a>

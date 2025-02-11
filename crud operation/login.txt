@@ -1,0 +1,5 @@
+<form method="POST" action="<?= base_url('usercontroller/login_action') ?>">
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Login</button>
+</form>

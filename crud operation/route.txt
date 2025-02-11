@@ -1,0 +1,11 @@
+$route['default_controller'] = 'usercontroller/login';
+$route['usercontroller/signup'] = 'usercontroller/signup';
+$route['usercontroller/signup_action'] = 'usercontroller/signup_action';
+$route['usercontroller/login'] = 'usercontroller/login';
+$route['usercontroller/login_action'] = 'usercontroller/login_action';
+$route['usercontroller/dashboard'] = 'usercontroller/dashboard';
+$route['usercontroller/admin_dashboard'] = 'usercontroller/admin_dashboard';
+$route['usercontroller/edit_user/(:num)'] = 'usercontroller/edit_user/$1';
+$route['usercontroller/update_user/(:num)'] = 'usercontroller/update_user/$1';
+$route['usercontroller/delete_user/(:num)'] = 'usercontroller/delete_user/$1';
+$route['usercontroller/logout'] = 'usercontroller/logout';

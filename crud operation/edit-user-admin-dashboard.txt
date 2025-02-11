@@ -1,0 +1,9 @@
+<form method="POST" action="<?= base_url('usercontroller/update_user/'.$user['id']) ?>">
+    <input type="text" name="username" value="<?= $user['username'] ?>" required>
+    <input type="email" name="email" value="<?= $user['email'] ?>" required>
+    <select name="role">
+        <option value="user" <?= $user['role'] == 'user' ? 'selected' : '' ?>>User</option>
+        <option value="admin" <?= $user['role'] == 'admin' ? 'selected' : '' ?>>Admin</option>
+    </select>
+    <button type="submit">Update</button>
+</form>
