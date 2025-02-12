@@ -107,14 +107,14 @@ class UserController extends BaseController{
     }
 
 
-    public function dashboard(){
+    // public function dashboard(){
 
-        if(!session()->get('logged_in')){
-            return redirect()->to('/login');
-        }else{
-            return view('/dashboard');
-        }
-    }
+    //     if(!session()->get('logged_in')){
+    //         return redirect()->to('/login');
+    //     }else{
+    //         return view('/dashboard');
+    //     }
+    // }
 
 
     public function logout(){

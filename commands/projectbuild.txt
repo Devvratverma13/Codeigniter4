@@ -1,0 +1,83 @@
+1. composer create-project codeigniter4/appstarter project_name
+
+2. php spark serve 
+3. Run above command to default show port : http://localhost:8000
+4. If you want to change port number :  php spark serve --port 8081
+
+5. Generate Controller :  php spark make:controller ControllerName
+6. Specify Type Generate Controller :  php spark make:controller ControllerName --rest
+
+7. Generate Model :  php spark make:controller ControllerName
+8. You can also specify that the model is associated with a particular database table:
+    cmd : php spark make:model ModelName --table=table_name
+
+9. Generate Migration : php spark make:migration MigrationName
+10. After creating your migration file, you can run the migration using : php spark migrate
+11. To roll back migrations : php spark migrate:rollback
+
+12. Generate a Seeder : php spark make:seeder SeederName
+13. You can then run the seeder using : php spark db:seed SeederName
+
+14. Generate a Filter : php spark make:filter FilterName
+
+15. Generate a Command : php spark make:command CommandName
+
+16. Run Unit Test : php spark test
+
+17. Clear cache : php spark cache:clear
+
+18. Database Command : php spark db:migrate, php spark db:seed
+
+----------------------------------------------------------------------------------------
+19. View List of Available Commands : php spark
+-----------------------------------------------------------------------------------------
+
+Cache
+  cache:clear       Clears the current system caches.
+  cache:info        Shows file cache information in the current system.
+
+CodeIgniter
+  config:check      Check your Config values.
+  env               Retrieves the current environment, or set a new one.
+  filter:check      Check filters for a route.
+  help              Displays basic usage information.
+  list              Lists the available commands.
+  namespaces        Verifies your namespaces are setup correctly.
+  optimize          Optimize for production.
+  phpini:check      Check your php.ini values.
+  publish           Discovers and executes all predefined Publisher classes.
+  routes            Displays all routes.
+  serve             Launches the CodeIgniter PHP-Development Server.
+
+Database
+  db:create         Create a new database schema.
+  db:seed           Runs the specified seeder to populate known data into the database.
+  db:table          Retrieves information on the selected table.
+  migrate           Locates and runs all new migrations against the database.
+  migrate:refresh   Does a rollback followed by a latest to refresh the current state of the database.
+  migrate:rollback  Runs the "down" method for all migrations in the last batch.
+  migrate:status    Displays a list of all migrations and whether they've been run or not.
+
+Encryption
+  key:generate      Generates a new encryption key and writes it in an `.env` file.
+
+Generators
+  make:cell         Generates a new Controlled Cell file and its view.
+  make:command      Generates a new spark command.
+  make:config       Generates a new config file.
+  make:controller   Generates a new controller file.
+  make:entity       Generates a new entity file.
+  make:filter       Generates a new filter file.
+  make:migration    Generates a new migration file.
+  make:model        Generates a new model file.
+  make:scaffold     Generates a complete set of scaffold files.
+  make:seeder       Generates a new seeder file.
+  make:test         Generates a new test file.
+  make:validation   Generates a new validation file.
+
+Housekeeping
+  debugbar:clear    Clears all debugbar JSON files.
+  logs:clear        Clears all log files.
+
+Translation
+  lang:find         Find and save available phrases to translate.

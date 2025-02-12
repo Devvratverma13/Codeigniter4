@@ -104,4 +104,8 @@ class Filters extends BaseFilters
      * @var array<string, array<string, list<string>>>
      */
     public array $filters = [];
+
+
+    // public $csrfExpiration = 7200; // 2 hours (in seconds)
+
 }

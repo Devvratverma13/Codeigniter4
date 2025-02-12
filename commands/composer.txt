@@ -1,0 +1,12 @@
+Summary of Common Composer Commands
+    1. Create a Project: composer create-project codeigniter4/appstarter project_name
+
+    2. Install Dependencies: composer install
+
+    3. Update Dependencies: composer update
+
+    4. Install Specific Package: composer require vendor/package
+
+    5. Remove Package: composer remove vendor/package
+
+    6. Run CodeIgniter Command: composer exec php spark <command>
